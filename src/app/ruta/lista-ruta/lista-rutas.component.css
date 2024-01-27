@@ -1,0 +1,23 @@
+.map{
+  margin-bottom: 20%;
+}
+
+li:last-child{
+  text-decoration: solid;
+}
+
+button a{
+  text-decoration: none;
+  color: hsl(0, 0%, 99%);
+}
+
+.filtro-container {
+  margin-bottom: 10px; /* Agrega margen inferior para separar visualmente del contenido siguiente */
+}
+
+.filtro-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 10px; /* Agrega un margen izquierdo para separar visualmente del label */
+}

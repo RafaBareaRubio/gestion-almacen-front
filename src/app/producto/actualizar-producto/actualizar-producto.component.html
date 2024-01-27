@@ -1,0 +1,102 @@
+<div class="col-md-6 offset-md-3">
+  <h3 class="text-center">Edición de producto</h3>
+  <form (ngSubmit)= "onSubmit()" #productoForm = "ngForm">
+    <div class="form-group">
+      <label>Nombre : </label>
+      <input type = "text"
+      class="form-control"
+      id = "nombre"
+      [(ngModel)] = "producto.nombre"
+      name = "nombre"
+      required
+      maxlength="30"
+      placeholder="Escriba su nombre "
+      #nombre = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf = "nombre.errors">
+          El nombre tiene que tener como maximo 30 caracteres
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Descripción : </label>
+      <input type = "text"
+      class="form-control"
+      id = "descripcion"
+      [(ngModel)] = "producto.descripcion"
+      name = "descripcion"
+      required
+      maxlength="75"
+      placeholder="Escriba la descripcion del producto"
+      #descripcion = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+        <div *ngIf = "descripcion.errors">
+          La descripcion tiene que tener como maximo 75 caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Cantidad : </label>
+      <input type = "number"
+      class="form-control"
+      id = "cantidad"
+      [(ngModel)] = "producto.cantidad"
+      name = "cantidad"
+      required
+      maxlength="11"
+      placeholder="Escriba la cantidad "
+      #cantidad = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "cantidad.invalid && (cantidad.dirty || cantidad.touched)">
+        <div *ngIf = "cantidad.errors">
+          Introduza la cantidad del producto
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Precio : </label>
+      <input type = "text"
+      class="form-control"
+      id = "precio"
+      [(ngModel)] = "producto.precio"
+      name = "precio"
+      required
+      maxlength="11"
+      placeholder="Escriba su precio "
+      #precio = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "precio.invalid && (precio.dirty || precio.touched)">
+        <div *ngIf = "precio.errors">
+          Introduza el precio del producto
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>ID Proveedor : </label>
+      <input type = "number"
+      class="form-control"
+      id = "idProveedor"
+      [(ngModel)] = "producto.idProveedor"
+      name = "idProveedor"
+      maxlength="11"
+      required
+      placeholder="Escriba el proveedor del producto"
+      #idProveedor = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "idProveedor.invalid && (idProveedor.dirty || idProveedor.touched)">
+        <div *ngIf = "idProveedor.errors">
+          Por favor introduzca un proveedor válido
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-success" [disabled]= "!productoForm.form.valid">Guardar</button>
+  </form>
+</div>

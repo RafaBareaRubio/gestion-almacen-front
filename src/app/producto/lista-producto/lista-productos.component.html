@@ -1,0 +1,67 @@
+<!-- Submenu -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="../empleados" routerLinkActive="active" class="nav-link" >Empleados</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../rutas" routerLinkActive="active" class="nav-link" >Rutas</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../proveedores" routerLinkActive="active" class="nav-link" >Proveedores</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="productos" routerLinkActive="active" class="nav-link" >Productos</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../tareas" routerLinkActive="active" class="nav-link" >Tareas</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Lista de cosas -->
+<br>
+<div class="container text-center">
+  <h2>Lista Productos</h2>
+  <button class="btn-success ">
+    <a routerLink="../registrar-producto" routerLinkActive="active" class="nav-link" >Añadir Producto</a>
+  </button>
+</div>
+<br>
+
+<!-- Filtro -->
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" (input)="aplicarFiltro()" placeholder="Buscar por Nombre">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" (click)="aplicarFiltro()">Buscar</button>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+      <th>Proveedor</th>
+      <th>Acciones</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor= "let producto of productos">
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.descripcion}}</td>
+      <td>{{producto.cantidad}}</td>
+      <td>{{producto.precio}}€</td>
+      <td>{{producto.idProveedor}}</td>
+      <td>
+        <button (click)= "actualizarProducto(producto.id)" class="btn btn-info">Editar</button>
+        <button (click)= "eliminarProducto(producto.id)" class="btn btn-danger" style="margin-left : 10px;">Eliminar</button>
+        <button (click)= "verDetallesDelProducto(producto.id)" class="btn btn-primary" style="margin-left : 10px;">Detalles</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

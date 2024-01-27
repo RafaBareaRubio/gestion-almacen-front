@@ -1,0 +1,102 @@
+<div class="col-md-6 offset-md-3">
+  <h3 class="text-center">Registro de ruta</h3>
+    <form (ngSubmit)= "onSubmit()" #rutaForm = "ngForm">
+      <div class="form-group">
+        <label>Destino Inicial : </label>
+        <input type = "text"
+        class="form-control"
+        id = "destinoInicial"
+        [(ngModel)] = "ruta.destinoInicial"
+        name = "destinoInicial"
+        required
+        maxlength="30"
+        placeholder="Escriba su destinoInicial "
+        #destinoInicial = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "destinoInicial.invalid && (destinoInicial.dirty || destinoInicial.touched)">
+          <div *ngIf = "destinoInicial.errors">
+            El destino inicial tiene que tener como maximo 30 caracteres
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Destino Final : </label>
+        <input type = "text"
+        class="form-control"
+        id = "destinoFinal"
+        [(ngModel)] = "ruta.destinoFinal"
+        name = "destinoFinal"
+        required
+        maxlength="30"
+        placeholder="Escriba su destinoFinal "
+        #destinoFinal = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "destinoFinal.invalid && (destinoFinal.dirty || destinoFinal.touched)">
+          <div *ngIf = "destinoFinal.errors">
+            El destino final tiene que tener como maximo 30 caracteres
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Duración : </label>
+        <input type = "number"
+        class="form-control"
+        id = "duracion"
+        [(ngModel)] = "ruta.duracion"
+        name = "duracion"
+        required
+        maxlength="11"
+        placeholder="Escriba su duracion "
+        #duracion = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "duracion.invalid && (duracion.dirty || duracion.touched)">
+          <div *ngIf = "duracion.errors">
+            La duración tiene que tener como maximo 30 caracteres
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Estado : </label>
+          <select name="estado" class="form-control"
+          id = "estado"
+          [(ngModel)] = "ruta.estado"
+          name = "estado"
+          required
+          placeholder="Escriba su Rol "
+          #estado = "ngModel">
+            <option disabled selected>Introduza su estado</option>
+            <option value="Terminado">Terminado</option>
+            <option value="En Proceso">En Proceso</option>
+            <option value="Pendiente">Pendiente</option>
+          </select>
+
+        <div class="alert alert-danger" *ngIf= "estado.invalid && (estado.dirty || estado.touched)">
+          <div *ngIf = "estado.errors">
+            Introduza su el estado de la ruta
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Empleado : </label>
+        <input type = "number"
+        class="form-control"
+        id = "idEmpleado"
+        [(ngModel)] = "ruta.idEmpleado"
+        name = "idEmpleado"
+        required
+        placeholder="Escriba su idEmpleado "
+        #idEmpleado = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "idEmpleado.invalid && (idEmpleado.dirty || idEmpleado.touched)">
+          <div *ngIf = "idEmpleado.errors">
+            Por favor escriba el ID del empleado asignado a dicha ruta
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success" [disabled]= "!rutaForm.form.valid">Guardar</button>
+    </form>

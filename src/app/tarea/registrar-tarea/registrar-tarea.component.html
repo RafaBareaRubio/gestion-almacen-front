@@ -1,0 +1,65 @@
+<div class="col-md-6 offset-md-3">
+  <h3 class="text-center">Registro de tarea</h3>
+  <form (ngSubmit)= "onSubmit()" #tareaForm = "ngForm">
+    <div class="form-group">
+      <label>Estado : </label>
+      <select name="estado" class="form-control"
+          id = "estado"
+          [(ngModel)] = "tarea.estado"
+          name = "estado"
+          required
+          placeholder="Escriba su Rol "
+          #estado = "ngModel">
+          <option disabled selected>Introduza su estado</option>
+          <option value="Terminado">Terminado</option>
+          <option value="En Proceso">En Proceso</option>
+          <option value="Pendiente">Pendiente</option>
+      </select>
+      <div class="alert alert-danger" *ngIf= "estado.invalid && (estado.dirty || estado.touched)">
+        <div *ngIf = "estado.errors">
+          Elija un estado
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Prioridad : </label>
+      <input type = "text"
+      class="form-control"
+      id = "prioridad"
+      [(ngModel)] = "tarea.prioridad"
+      name = "prioridad"
+      required
+      maxlength="30"
+      placeholder="Escriba su prioridad "
+      #prioridad = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "prioridad.invalid && (prioridad.dirty || prioridad.touched)">
+        <div *ngIf = "prioridad.errors">
+          Elija una prioridad tiene que tener como maximo 30 caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Descripción : </label>
+      <input type = "descripcion"
+      class="form-control"
+      id = "descripcion"
+      [(ngModel)] = "tarea.descripcion"
+      name = "descripcion"
+      required
+      maxlength="75"
+      placeholder="Escriba una descripcion"
+      #descripcion = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+        <div *ngIf = "descripcion.errors">
+          La descripcion tiene que tener como maximo 150 caracteres
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-success" [disabled]= "!tareaForm.form.valid">Guardar</button>
+  </form>
+</div>

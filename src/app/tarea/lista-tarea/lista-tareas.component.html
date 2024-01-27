@@ -1,0 +1,65 @@
+<!-- Submenu -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="../empleados" routerLinkActive="active" class="nav-link" >Empleados</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../rutas" routerLinkActive="active" class="nav-link" >Rutas</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../proveedores" routerLinkActive="active" class="nav-link" >Proveedores</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="../productos" routerLinkActive="active" class="nav-link" >Productos</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="tareas" routerLinkActive="active" class="nav-link" >Tareas</a>
+    </li>
+
+  </ul>
+</nav>
+
+<!-- Lista de cosas -->
+<br>
+<div class="container text-center">
+  <h2>Lista Tareas</h2>
+  <button class="btn-success ">
+    <a routerLink="../registrar-tarea" routerLinkActive="active" class="nav-link" >Añadir Tarea</a>
+  </button>
+</div><br>
+
+<!-- Filtro -->
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" (input)="aplicarFiltro()" placeholder="Buscar por estado">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" (click)="aplicarFiltro()">Buscar</button>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>Prioridad</th>
+      <th>Acciones</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor= "let tarea of tareas">
+      <td>{{tarea.id}}</td>
+      <td>{{tarea.descripcion}}</td>
+      <td>{{tarea.estado}}</td>
+      <td>{{tarea.prioridad}}</td>
+      <td>
+        <button (click)= "actualizarTarea(tarea.id)" class="btn btn-info">Editar</button>
+        <button (click)= "eliminarTarea(tarea.id)" class="btn btn-danger" style="margin-left : 10px;">Eliminar</button>
+        <button (click)= "verDetallesDelTarea(tarea.id)" class="btn btn-primary" style="margin-left : 10px;">Detalles</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
